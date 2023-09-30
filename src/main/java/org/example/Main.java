@@ -1,19 +1,46 @@
 package org.example;
+import java.util.ArrayList;
+import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
+class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("Hello world!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        System.out.println(mathFunction(1,2,3));
+        System.out.println(mathFunction(3,1,2));
+        System.out.println(mathFunction(3,1,3));
+        System.out.println(mathFunction(3,0,3));
+    }
+    /*
+    Write a function that takes three Integer numbers Number1, Number2, and Number3, and
+    determines if there is a mathematical operation that will make Number1 (operation) Number2
+    equal to Number3. If one or more of the 4 common mathematical operations (+,-,*,/) can
+    complete the function, return the String representation of the mathematical function. If none of
+    the 4 mathematical operations can make the statement true, return the String "None".
+    */
+    public static String mathFunction(Integer Number1, Integer Number2, Integer Number3) {
+        List<String> expressions = new ArrayList<>();
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        if (Number1 + Number2 == Number3) {
+            expressions.add("+");
         }
+
+        if (Number1 - Number2 == Number3) {
+            expressions.add("-");
+        }
+
+        if (Number1*Number2 == Number3) {
+            expressions.add("*");
+        }
+
+        if (Number2 != 0 && Number1/Number2 == Number3) {
+            expressions.add("/");
+        }
+
+        if (expressions.isEmpty()) {
+            return "None";
+        }
+
+        return String.join("", expressions); // Return the stack content as a String
     }
 }
